@@ -7,7 +7,7 @@
       <div class="text-container">
         <h2>L'histoire d'Alezia</h2>
         <p class="description">Chez <strong>Alezia</strong>, nous nous inspirons de la célèbre bataille d'Alésia, symbole de persévérance et de stratégie. Fondée sur des valeurs d'innovation et de résilience, notre entreprise est déterminée à guider nos clients vers le succès, tout comme Vercingétorix a guidé ses troupes avec détermination et intelligence. Avec une équipe passionnée et des solutions technologiques avancées, nous accompagnons les entreprises dans leurs défis quotidiens.</p>
-        <p class="founder-info">Tom Viatour - Alezia, Co-Fondateur</p>
+        <p class="founder-info"> Alezia, Co-Fondateur</p>
       </div>
     </div>
   </section>

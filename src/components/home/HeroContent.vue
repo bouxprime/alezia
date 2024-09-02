@@ -1,7 +1,7 @@
 <template>
   <div class="hero-content">
     <h2 class="hero-subtitle">Nous sommes Alezia</h2>
-    <h1 class="hero-title">Experts en IT.<br>Solutions VoIP précises.<br>Votre croissance assurée.</h1>
+    <h1 class="hero-title">Experts en IT.<br>Solutions VoIP.<br>Votre croissance assurée.</h1>
     <router-link to="/contact" class="contact-button-hero">Contact</router-link>
   </div>
 </template>

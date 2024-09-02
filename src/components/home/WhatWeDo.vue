@@ -5,50 +5,134 @@
         <h2>Nos services</h2>
         <p>Chez <strong>Alezia</strong>, nous proposons des solutions informatiques et de téléphonie VoIP pour accompagner avec précision les entreprises dans leur croissance. Avec notre expertise, nous garantissons des services de haute qualité pour répondre à tous vos besoins technologiques.</p>
       </div>
-      <div class="cards">
-        <div class="card">
-          <a href="#">
-            <div class="card-icon">🔷</div>
-            <h3>Monitoring IA</h3>
-            <p>Surveillez votre parc informatique avec nos solutions d'intelligence artificielle pour une gestion optimale.</p>
-          </a>
+      <div class="cards-wrapper">
+        <!-- Section Title -->
+        <div id="section-title" class="section-title">
+          <h3>Téléphonie</h3> <!-- Default section title -->
         </div>
-        <div class="card">
-          <a href="#">
-            <div class="card-icon">📦</div>
-            <h3>Leasing matériel</h3>
-            <p>Profitez de nos options de leasing pour obtenir du hardware et software à la pointe de la technologie.</p>
-          </a>
-        </div>
-        <div class="card">
-          <a href="#">
-            <div class="card-icon">🚀</div>
-            <h3>Sécurité IT</h3>
-            <p>Protégez votre infrastructure avec nos systèmes de sécurité adaptés à vos besoins spécifiques.</p>
-          </a>
-        </div>
-        <div class="card">
-          <a href="#">
-            <div class="card-icon">👥</div>
-            <h3>Téléphonie VoIP</h3>
-            <p>Découvrez nos solutions VoIP avec Wildix et 3CX, les leaders du marché pour une communication efficace.</p>
-          </a>
-        </div>
-        <div class="card">
-          <a href="#">
-            <div class="card-icon">💻</div>
-            <h3>Lignes internet</h3>
-            <p>Assurez la fiabilité de votre réseau avec nos services de lignes internet performants et stables.</p>
-          </a>
+
+        <!-- Navigation Arrows -->
+<div class="navigation">
+  <button id="prev" class="arrow">‹</button> <!-- Use the '‹' symbol -->
+  <button id="next" class="arrow">›</button> <!-- Use the '›' symbol -->
+</div>
+
+
+
+        <div class="cards">
+          <!-- First Set: Téléphonie -->
+          <div class="card">
+            <router-link :to="{ name: 'SolutionPage' }">
+              <div class="card-icon">📞</div>
+              <h3>Solution</h3>
+              <p>Découvrez nos solutions téléphoniques adaptées à vos besoins.</p>
+            </router-link>
+          </div>
+          <div class="card">
+            <router-link :to="{ name: 'IntegrationPage' }">
+              <div class="card-icon">🔧</div>
+              <h3>Intégration</h3>
+              <p>Nous intégrons vos systèmes de téléphonie avec expertise.</p>
+            </router-link>
+          </div>
+          <div class="card">
+            <router-link :to="{ name: 'XBeesPage' }">
+              <div class="card-icon">🐝</div>
+              <h3>X-Bees</h3>
+              <p>Communication unifiée avec X-Bees, la solution flexible.</p>
+            </router-link>
+          </div>
+          <div class="card">
+            <router-link :to="{ name: 'XHopperPage' }">
+              <div class="card-icon">📡</div>
+              <h3>X-Hopper</h3>
+              <p>Optimisez votre réseau téléphonique avec X-Hopper.</p>
+            </router-link>
+          </div>
+          <div class="card">
+            <router-link :to="{ name: 'AleziaStudioPage' }">
+              <div class="card-icon">🎥</div>
+              <h3>Alezia Studio</h3>
+              <p>Créez des expériences de communication innovantes avec Alezia .</p>
+            </router-link>
+          </div>
+
+          <!-- Second Set: IT -->
+          <div class="card hidden">
+            <router-link :to="{ name: 'CloudPage' }">
+              <div class="card-icon">☁️</div>
+              <h3>Cloud</h3>
+              <p>Migrez vers le cloud avec nos solutions sécurisées et flexibles.</p>
+            </router-link>
+          </div>
+          <div class="card hidden">
+            <router-link :to="{ name: 'ConseilsPage' }">
+              <div class="card-icon">💼</div>
+              <h3>Conseils</h3>
+              <p>Recevez des conseils stratégiques pour votre infrastructure IT.</p>
+            </router-link>
+          </div>
+          <div class="card hidden">
+            <router-link :to="{ name: 'CybersecuritePage' }">
+              <div class="card-icon">🔒</div>
+              <h3>Cybersécurité</h3>
+              <p>Protégez vos données avec nos solutions de cybersécurité.</p>
+            </router-link>
+          </div>
+          <div class="card hidden">
+            <router-link :to="{ name: 'ServicesManagePage' }">
+              <div class="card-icon">⚙️</div>
+              <h3>Services managés</h3>
+              <p>Optimisez la gestion de votre infrastructure avec nos services managés.</p>
+            </router-link>
+          </div>
+          <div class="card hidden">
+            <router-link :to="{ name: 'MaterielPage' }">
+              <div class="card-icon">💻</div>
+              <h3>Matériels et solutions</h3>
+              <p>Obtenez le meilleur équipement pour vos besoins informatiques.</p>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </template>
 
+
 <script>
 export default {
-  name: 'WhatWeDo'
+  name: 'WhatWeDo',
+  mounted() {
+    const cardsContainer = document.querySelector('.cards');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    const sectionTitle = document.getElementById('section-title');
+
+    let showingFirstSet = true;
+
+    nextButton.addEventListener('click', () => {
+      if (showingFirstSet) {
+        cardsContainer.classList.add('showing-second-set');
+        sectionTitle.innerHTML = '<h3>IT</h3>'; // Change title to IT
+      } else {
+        cardsContainer.classList.remove('showing-second-set');
+        sectionTitle.innerHTML = '<h3>Téléphonie</h3>'; // Change title to Téléphonie
+      }
+      showingFirstSet = !showingFirstSet;
+    });
+
+    prevButton.addEventListener('click', () => {
+      if (!showingFirstSet) {
+        cardsContainer.classList.remove('showing-second-set');
+        sectionTitle.innerHTML = '<h3>Téléphonie</h3>'; // Change title to Téléphonie
+      } else {
+        cardsContainer.classList.add('showing-second-set');
+        sectionTitle.innerHTML = '<h3>IT</h3>'; // Change title to IT
+      }
+      showingFirstSet = !showingFirstSet;
+    });
+  }
 }
 </script>
 
@@ -106,6 +190,21 @@ export default {
   max-width: 100%; /* Ensure text doesn't exceed container width */
 }
 
+.cards-wrapper {
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section-title h3 {
+  font-size: 2em;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -152,6 +251,50 @@ export default {
   font-size: 1.2em; /* Adjusted card text size */
   color: #666;
 }
+
+.hidden {
+  display: none; /* Hide the additional cards */
+}
+
+.arrow {
+  background: #007bff; /* Blue background color */
+  color: white; /* White arrow color */
+  border: none; /* Remove border */
+  padding: 10px; /* Adjust padding for arrow size */
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 1.5em; /* Adjust size for better visibility */
+  border-radius: 50%; /* Make the button round */
+  width: 50px; /* Define a fixed width and height for a perfect circle */
+  height: 50px;
+  text-align: center; /* Center the text horizontally */
+  display: inline-flex; /* Ensure the button behaves as an inline element */
+  align-items: center; /* Center the text vertically */
+  justify-content: center; /* Center the text horizontally */
+  transition: background 0.3s, transform 0.3s; /* Add transitions for smooth changes */
+}
+
+.arrow:hover {
+  background: #0056b3; /* Darker blue background on hover */
+  transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Adjust margin to ensure spacing above the cards */
+}
+
+
+/* Additional CSS for handling visibility */
+.cards.showing-second-set .card.hidden {
+  display: block;
+}
+
+.cards.showing-second-set .card:not(.hidden) {
+  display: none;
+}
+
 
 @media (max-width: 1024px) {
   .cards {

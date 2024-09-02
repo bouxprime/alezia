@@ -9,14 +9,21 @@
       <div class="right-section">
         <div class="social">
           <h3>Nos réseaux</h3>
-          <a href="https://www.instagram.com" target="_blank">Instagram</a>
-          <a href="https://www.facebook.com" target="_blank">Facebook</a>
-          <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+          <a href="https://www.tiktok.com" target="_blank">
+            <i class="fab fa-tiktok"></i> TikTok
+          </a>
+          <a href="https://www.facebook.com" target="_blank">
+            <i class="fab fa-facebook"></i> Facebook
+          </a>
+          <a href="https://www.linkedin.com" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
         </div>
         <div class="contact" ref="contactSection">
           <h3>Nous contacter</h3>
-          <p>Jean: 0123 456 789</p>
-          <p>Marie: 0987 654 321</p>
+          <p><i class="fas fa-phone-alt"></i> 
+            <a href="tel:+3271962182" class="phone-link">+32 71 96 21 82</a>
+          </p>
         </div>
       </div>
     </div>
@@ -43,6 +50,7 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -118,9 +126,24 @@ footer {
 .social a {
   color: white;
   text-decoration: none;
+  font-size: 1.2em; /* Increase font size */
+}
+
+.social a i {
+  font-size: 1.5em; /* Increase icon size */
+  margin-right: 0.5em; /* Add space between icon and text */
 }
 
 .social a:hover {
+  text-decoration: underline;
+}
+
+.phone-link {
+  color: white;
+  text-decoration: none;
+}
+
+.phone-link:hover {
   text-decoration: underline;
 }
 

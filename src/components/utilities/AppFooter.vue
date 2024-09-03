@@ -44,8 +44,32 @@ export default {
     });
 
     observer.observe(this.$refs.footer);
+    // Load Google Maps
+    if (typeof google !== 'undefined') {
+      this.initMap();
+    } else {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDxrlGZZCmy3tPPFzF7kPLLc6tbmzCYHO0&callback=initMap`;
+      script.async = true;
+      document.head.appendChild(script);
+
+      window.initMap = this.initMap;
+    }
+  },
+  methods: {
+    /* eslint-disable no-unused-vars */
+    initMap() {
+      /* eslint-disable no-undef */
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 48.8566, lng: 2.3522 }, // Paris coordinates as an example
+        zoom: 12
+      });
+      /* eslint-enable no-undef */
+    }
+    /* eslint-enable no-unused-vars */
   }
 }
+
 </script>
 
 <style>

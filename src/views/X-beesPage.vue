@@ -26,10 +26,5 @@ export default {
 </script>
 
 <style scoped>
-.x-bees-page {
-  padding-top: 120px;
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-  line-height: 1.6;
-}
+
 </style>

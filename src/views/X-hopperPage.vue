@@ -77,7 +77,6 @@ export default {
 
 <style scoped>
 .x-hoppers-page {
-  padding-top: 8rem; /* Prevent overlap with the navbar */
   font-family: 'Roboto', sans-serif;
   color: #333;
   line-height: 1.6;
@@ -85,8 +84,8 @@ export default {
 
 .hero {
   text-align: center;
-  padding: 2rem;
   background-color: #f7f7f7;
+  padding: 18rem 2rem 2rem;
 }
 
 .hero h1 {

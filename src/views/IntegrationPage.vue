@@ -10,9 +10,9 @@
       </div>
     </section>
 
-    <!-- Bouton d'intégrations disponibles -->
+    <!-- Texte d'intégrations disponibles -->
     <section class="integrations-available">
-      <button class="integrations-button">Nos intégrations disponibles</button>
+      <p class="integrations-text">Nos intégrations disponibles</p>
     </section>
 
     <!-- Section: Classements -->
@@ -56,6 +56,7 @@ export default {
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  padding-top: 2rem;
 }
 
 .hero-text {
@@ -70,24 +71,16 @@ export default {
   margin-bottom: 1rem;
 }
 
-/* Bouton d'intégrations disponibles */
+/* Texte d'intégrations disponibles */
 .integrations-available {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.integrations-button {
-  background-color: #007bff;
-  color: white;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.integrations-button:hover {
-  background-color: #0056b3;
+.integrations-text {
+  color: #007bff;
+  font-size: 2.5rem; /* Taille de la police identique à celle du titre "Intégration" */
+  font-weight: bold;
 }
 
 /* Section de classifications */

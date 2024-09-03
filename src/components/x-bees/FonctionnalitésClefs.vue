@@ -68,7 +68,8 @@
   
   .x-bees-features h2 {
     text-align: center;
-    margin-bottom: 2rem; /* Ajouter de l'espace sous le titre */
+    margin-bottom: 2rem;
+    color: #007bff /* Ajouter de l'espace sous le titre */
   }
   
   .x-bees-hexagon-container {

@@ -65,7 +65,7 @@
   
   <style scoped>
   .solution-voip {
-    padding: 8rem 2rem 2rem; /* Padding top increased */
+    padding: 18rem 2rem 2rem; /* Padding top increased */
     background-color: #f7f7f7;
   }
   
@@ -86,6 +86,7 @@
     grid-column-gap: 0.5rem; /* Reduced horizontal gap */
     grid-row-gap: 1rem; /* Keep a bit more space between rows */
     justify-items: center; /* Center the cards horizontally */
+    padding-top: 8rem;
   }
   
   .card {

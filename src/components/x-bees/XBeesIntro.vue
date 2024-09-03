@@ -15,7 +15,7 @@
   <style scoped>
   .hero {
     text-align: center;
-    padding: 2rem;
+    padding: 12rem 2rem 2rem;
     background-color: #f7f7f7;
   }
   

@@ -1,27 +1,12 @@
 <template>
   <div class="cloud-page">
     <!-- Section principale : Le Cloud -->
-    <section class="cloud-hero">
-      <div class="hero-content">
-        <h1>Le Cloud</h1>
-        <p>
-          Intégré au paysage entrepreneurial depuis quelques années, le Cloud propose une vaste gamme de services et ouvre aux entreprises un éventail infini de possibilités.
-        </p>
-        <p>
-          Dans ce contexte, ALESIA permet à ses clients de saisir ces opportunités tout en hébergeant leurs données dans un datacenter situé en Belgique.
-        </p>
-      </div>
-    </section>
+    <CloudHeroComponent />
 
     <!-- Bannière : Pourquoi avoir recours au Cloud ? -->
     <section class="banner why-cloud">
       <h2>Pourquoi avoir recours au Cloud ?</h2>
       <CloudFeatureComponent />
-    </section>
-
-    <!-- Bannière : Avec le Cloud, découvrez un monde de possibilités -->
-    <section class="banner discover">
-      <h2>Avec le Cloud, découvrez un monde de possibilités</h2>
     </section>
 
     <!-- Section Virtualisation -->
@@ -34,15 +19,18 @@
 
     <!-- Section Avantages & Accessibilité -->
     <section class="advantages">
+      <!-- Card pour Les avantages -->
       <div class="feature">
-        <h3>Les avantages</h3>
+        <h3 class="feature-title">Les avantages</h3> <!-- Titre en bleu -->
         <p>
           Votre serveur virtualisé offre la flexibilité d'ajuster les ressources et de restaurer rapidement le système.
           Il est accessible depuis divers appareils, garantissant une flexibilité maximale, que vous utilisiez un PC, un Mac, une tablette ou un smartphone.
         </p>
       </div>
+      
+      <!-- Card pour Accessibilité & Sauvegarde -->
       <div class="feature">
-        <h3>Accessibilité & Sauvegarde</h3>
+        <h3 class="feature-title">Accessibilité & Sauvegarde</h3> <!-- Titre en bleu -->
         <p>
           Un serveur cloud permet à tous vos collaborateurs d’accéder aux programmes, peu importe leur emplacement.
           Nous répliquons vos données dans un autre DataCenter belge et proposons des sauvegardes sur 14 jours, extensibles jusqu'à 13 mois.
@@ -54,12 +42,14 @@
 </template>
 
 <script>
+import CloudHeroComponent from '@/components/cloud/CloudHeroComponent.vue';
 import CloudFeatureComponent from '@/components/cloud/CloudFeatureComponent.vue';
 import CloudVirtualizationComponent from '@/components/cloud/CloudVirtualizationComponent.vue';
 
 export default {
   name: 'CloudPage',
   components: {
+    CloudHeroComponent,
     CloudFeatureComponent,
     CloudVirtualizationComponent
   }
@@ -71,40 +61,16 @@ export default {
   font-family: 'Roboto', sans-serif;
   color: #333;
   line-height: 1.6;
-  padding-top: 120px; /* Pour éviter que la navbar ne chevauche le contenu */
-}
-
-/* Section Héro "Le Cloud" */
-.cloud-hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 50vh;
-  background-color: #f7f7f7;
-}
-
-.hero-content {
-  text-align: center;
-  max-width: 600px;
-}
-
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero-content p {
-  margin-bottom: 1rem;
-  font-size: 1.125rem;
-  line-height: 1.6;
+  background-color: white;
+  padding: 0;
+  margin: 0;
 }
 
 /* Bannière */
 .banner {
   padding: 2rem;
   text-align: center;
-  background-color: #e0f7fa;
+  background-color: white;
 }
 
 .banner h2 {
@@ -114,28 +80,10 @@ export default {
 
 /* Virtualisation */
 .virtualization {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 2rem;
-  background-color: #f7f7f7;
-}
-
-.virtualization .content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
   align-items: center;
-}
-
-.virtualization .image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.virtualization .text {
-  flex: 1 1 300px;
+  padding: 1.5rem 2rem;
+  background-color: #f7f7f7;
 }
 
 /* Section Avantages */
@@ -144,7 +92,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 2rem;
-  background-color: #e0f7fa;
+  background-color: white;
 }
 
 .advantages .feature {
@@ -154,5 +102,12 @@ export default {
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les titres des cards (Les avantages et Accessibilité & Sauvegarde) */
+.feature-title {
+  color: #1e90ff; /* Titre en bleu */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 </style>

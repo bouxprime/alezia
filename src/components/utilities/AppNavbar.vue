@@ -1,16 +1,43 @@
 <template>
-  <nav :class="{'scrolled': isScrolled, 'about-page': isAboutPage, 'contact-page': isContactPage, 'services-page': isServicesPage}">
+  <nav :class="{'scrolled': isScrolled || !isHomePage, 'about-page': isAboutPage, 'contact-page': isContactPage, 'services-page': isServicesPage}">
     <div class="navbar-container">
-      <div :class="{'logo': true, 'scrolled': isScrolled}">
+      <div :class="{'logo': true, 'scrolled': isScrolled || !isHomePage}">
         <router-link to="/">
           <img src="@/assets/logo-alezia.png" alt="Logo" />
         </router-link>
       </div>
       <ul :class="{'nav-links': true, 'open': isMenuOpen, 'about-page': isAboutPage && !isScrolled, 'contact-page': isContactPage && !isScrolled, 'services-page': isServicesPage && !isScrolled}">
         <li><router-link to="/" @click="toggleMenu">Home</router-link></li>
-        <li><router-link to="/services" @click="toggleMenu">Services</router-link></li>
-        <li><router-link to="/about" @click="toggleMenu">About</router-link></li>
+        <li class="dropdown">
+          <a @click="toggleDropdown('telephonie')">Téléphonie</a>
+          <ul v-if="dropdowns.telephonie" class="dropdown-menu">
+            <li><router-link to="/solution" @click="toggleMenu">Solutions</router-link></li>
+            <li><router-link to="/integration" @click="toggleMenu">Intégrations</router-link></li>
+            <li><router-link to="/x-bees" @click="toggleMenu">X-bees</router-link></li>
+            <li><router-link to="/x-hopper" @click="toggleMenu">X-hopper</router-link></li>
+            <li><router-link to="/alezia-studio" @click="toggleMenu">Alezia Studio</router-link></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a @click="toggleDropdown('it')">IT</a>
+          <ul v-if="dropdowns.it" class="dropdown-menu">
+            <li><router-link to="/cloud" @click="toggleMenu">Cloud</router-link></li>
+            <li><router-link to="/conseils" @click="toggleMenu">Conseils</router-link></li>
+            <li><router-link to="/cybersecurite" @click="toggleMenu">Cybersécurité</router-link></li>
+            <li><router-link to="/services-manage" @click="toggleMenu">Services Managés</router-link></li>
+            <li><router-link to="/materiel" @click="toggleMenu">Matériel et solutions</router-link></li>
+          </ul>
+        </li>
+        <!-- Nouveau bouton À Propos ajouté ici -->
+        <li><router-link to="/apropos" @click="toggleMenu">À Propos</router-link></li>
         <li><router-link to="/contact" class="contact-button" @click="toggleMenu">Contact</router-link></li>
+        <li>
+          <button class="phone-button" @click="handlePhoneClick">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .57 2.65 2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.8 6.8l1.27-1.27a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.65.57 2 2 0 0 1 1.72 2z"/>
+            </svg>
+          </button>
+        </li>
       </ul>
       <div class="burger" @click="toggleMenu">
         <div :class="{'line1': true, 'toggle': isMenuOpen}"></div>
@@ -27,10 +54,17 @@ export default {
   data() {
     return {
       isScrolled: false,
-      isMenuOpen: false
+      isMenuOpen: false,
+      dropdowns: {
+        telephonie: false,
+        it: false,
+      },
     };
   },
   computed: {
+    isHomePage() {
+      return this.$route.path === '/';
+    },
     isAboutPage() {
       return this.$route.path === '/about';
     },
@@ -47,6 +81,12 @@ export default {
     },
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    toggleDropdown(dropdown) {
+      this.dropdowns[dropdown] = !this.dropdowns[dropdown];
+    },
+    handlePhoneClick() {
+      console.log("Phone button clicked!");
     }
   },
   mounted() {
@@ -57,6 +97,11 @@ export default {
   }
 }
 </script>
+
+<style>
+/* Reste du style inchangé */
+</style>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -76,14 +121,14 @@ nav {
   background: transparent;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
-  height: 120px; /* Initial height */
+  height: 120px;
 }
 nav.scrolled {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 1em 2em; /* Reduced padding on scroll */
-  height: 90px; /* Reduced height on scroll */
+  padding: 1em 2em;
+  height: 90px;
 }
 .navbar-container {
   display: flex;
@@ -94,18 +139,19 @@ nav.scrolled {
   box-sizing: border-box;
 }
 .logo img {
-  height: 120px; /* Larger initial logo size */
-  width: auto; /* Maintain aspect ratio */
+  height: 120px;
+  width: auto;
   transition: height 0.3s, transform 0.3s;
-  transform: scale(1.1); /* Slight zoom */
+  transform: scale(1.1);
 }
 nav.scrolled .logo img {
-  height: 90px; /* Smaller logo size on scroll */
-  transform: scale(1.0); /* Reset zoom */
+  height: 90px;
+  transform: scale(1.0);
 }
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: center; /* Assure un alignement vertical centré pour tous les éléments */
   gap: 1em;
   margin: 0;
   padding: 0;
@@ -113,25 +159,58 @@ nav.scrolled .logo img {
   font-size: 1.1em;
   box-sizing: border-box;
 }
+
 .nav-links li {
   color: white;
+  position: relative;
 }
+
 .nav-links a {
   color: white;
   text-decoration: none;
-  margin: 25px;
+  padding: 0.5em 1em; /* Uniformise le padding pour tous les liens */
   transition: color 0.3s;
+  cursor: pointer;
 }
-nav.scrolled .nav-links a {
-  color: black;
-}
+
+nav.scrolled .nav-links a,
 nav.about-page .nav-links a,
 nav.contact-page .nav-links a,
 nav.services-page .nav-links a {
   color: black;
 }
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%; /* Centre horizontalement par rapport au bouton */
+  transform: translateX(-50%); /* Centre la liste déroulante */
+  background-color: white;
+  color: black;
+  padding: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+  min-width: 200px;
+  white-space: nowrap;
+  border-radius: 10px; /* Ajoutez cette ligne pour le border-radius */
+}
+
+.dropdown-menu li {
+  margin: 0.5em 0;
+}
+
+.dropdown-menu a {
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 .contact-button {
-  padding: 0.5em 2em;
+  padding: 0.5em 2.5em; /* Augmenté pour élargir le bouton */
   border: 2px solid #1e90ff;
   border-radius: 50px;
   color: white;
@@ -140,35 +219,76 @@ nav.services-page .nav-links a {
   background-color: #1e90ff;
   transition: background-color 0.3s, color 0.3s;
   font-size: 1.2em;
-  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* Assure une hauteur uniforme avec les autres éléments */
 }
+
 .contact-button:hover {
   background-color: transparent;
   color: #1e90ff;
 }
+
+.phone-button {
+  padding: 0.5em 1em; /* Réduit la largeur en ajustant le padding */
+  border: 2px solid #1e90ff;
+  border-radius: 25px; /* Réduit le border-radius pour diminuer la largeur du round */
+  color: white;
+  background-color: #1e90ff;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+  height: 40px; /* Assure une hauteur uniforme avec les autres éléments */
+}
+
+.phone-button:hover {
+  background-color: transparent;
+  color: #1e90ff;
+}
+
+
+.phone-button svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .burger {
   display: none;
   cursor: pointer;
   z-index: 1001;
   position: absolute;
-  right: 20px; /* Positioning the burger menu to the right */
+  right: 20px;
 }
+
 .burger div {
   width: 25px;
   height: 3px;
-  background-color: black; /* Change burger color to black */
+  background-color: black;
   margin: 5px;
   transition: all 0.3s ease;
 }
+
 .burger .toggle.line1 {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
+
 .burger .toggle.line2 {
   opacity: 0;
 }
+
 .burger .toggle.line3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
+
 @media (max-width: 768px) {
   nav {
     padding: 1em;
@@ -178,23 +298,31 @@ nav.services-page .nav-links a {
     right: 0;
     height: 100vh;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.9); /* Change background to a semi-transparent white */
+    background-color: rgba(255, 255, 255, 0.9);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw; /* Make the menu take the full viewport width */
+    width: 100vw;
     transform: translateX(100%);
     transition: transform 0.3s ease-in;
     box-sizing: border-box;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
   }
   .nav-links.open {
     transform: translateX(0%);
   }
   .nav-links a {
-    color: black; /* Black text color for the links */
-    margin: 15px 0; /* Adjust margin for better spacing */
+    color: black;
+    margin: 15px 0;
+  }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    padding: 0;
+  }
+  .dropdown-menu li {
+    margin: 0.5em 0;
   }
   .burger {
     display: block;

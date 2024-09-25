@@ -1,13 +1,13 @@
 <template>
   <div class="blog-home">
     <div class="blog-header">
-      <h2 class="news-title">News</h2>
+      <h2 class="news-title">Les nouvelles de Alezia</h2>
       <div class="navigation-buttons">
         <button @click="prevSlide" class="nav-button">&#8249;</button>
         <button @click="nextSlide" class="nav-button">&#8250;</button>
       </div>
     </div>
-    <p class="subheader">Read the latest stories from our world.</p>
+    <p class="subheader">Lisez nos derniers articles</p>
     <div class="blog-cards-wrapper">
       <div class="blog-cards" :style="transformStyle">
         <div v-for="(card, index) in eventBus.news" :key="index" class="blog-card">

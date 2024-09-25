@@ -50,7 +50,7 @@ export default {
 /* Styles pour la section "materiel-wildix" */
 .materiel-wildix {
   padding: 2rem;
-  padding-top: 4rem; /* Ajouter du padding en haut */
+  padding-top: 4rem;
 }
 
 .materiel-wildix h2 {

@@ -47,6 +47,14 @@ export default {
 </script>
 
 <style scoped>
+/* Import de la police Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Styles généraux pour la police Poppins et sans-serif */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 /* Styles pour la section "materiel-wildix" */
 .materiel-wildix {
   padding: 2rem;
@@ -57,13 +65,15 @@ export default {
   font-size: 2rem;
   margin-bottom: 1rem;
   text-align: center;
+  font-family: 'Poppins', sans-serif; /* Utilisation de la police Poppins */
 }
 
-.materiel-wildix .subtitle { /* Appliquer le même style que la description */
+.materiel-wildix .subtitle {
   text-align: center;
   margin-bottom: 6rem; /* Ajouter du padding en bas */
-  font-size: 2rem; /* Même taille que le titre */
-  color: blue; /* Couleur bleue pour correspondre à l'autre section */
+  font-size: 2rem;
+  color: #007BFF; /* Couleur bleue spécifique */
+  font-family: 'Poppins', sans-serif; /* Utilisation de la police Poppins */
 }
 
 /* Style pour le carrousel */
@@ -112,6 +122,7 @@ export default {
   z-index: 10;
   border-radius: 50%; /* Rond */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Ajout d'une ombre pour un effet plus esthétique */
+  font-family: 'Poppins', sans-serif; /* Utilisation de la police Poppins */
 }
 
 .carousel-button:hover {

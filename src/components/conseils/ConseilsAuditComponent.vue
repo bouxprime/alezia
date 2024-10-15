@@ -1,27 +1,40 @@
 <template>
-  <section class="audit">
-    <h2>Audit & accompagnement</h2>
-    <p>Grâce à un audit précis, nous parvenons à comprendre la direction technique que vous souhaitez donner à votre structure ainsi que vos attentes et vos enjeux stratégiques.</p>
-    <div class="grid-container">
-      <div class="card" v-for="(advantage, index) in advantages" :key="index">
-        <div class="card-inner">
-          <div class="card-front">
-            <h3>{{ advantage.title }}</h3>
-          </div>
-          <div class="card-back">
-            <p>{{ advantage.description }}</p>
-          </div>
+  <Wave2Component class="full-width-wave" />
+  <section class="audit-features">
+    <h2>Audit & Accompagnement</h2> <!-- Titre de la section -->
+
+    <div class="features-container">
+      <div class="features-grid">
+        <div
+          class="feature-box"
+          v-for="(advantage, index) in advantages"
+          :key="index"
+          @click="selectAdvantage(index)"
+          :class="{ active: selectedAdvantageIndex === index }"
+        >
+          <h3>{{ advantage.title }}</h3>
         </div>
+      </div>
+
+      <div class="feature-description" v-if="selectedAdvantage">
+        <h3>{{ selectedAdvantage.title }}</h3>
+        <p>{{ selectedAdvantage.description }}</p>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import Wave2Component from '@/components/utilities/wave2.vue';
+
 export default {
-  name: 'ConseilsAuditComponent',
+  name: 'AuditFeaturesComponent',
+  components: {
+    Wave2Component,
+  },
   data() {
     return {
+      selectedAdvantageIndex: 0,
       advantages: [
         { title: 'Performance', description: 'Optimisez vos workflows en automatisant les processus.' },
         { title: 'Optimisation des coûts', description: 'Profitez de solutions numériques ajustées pour réduire vos coûts.' },
@@ -30,85 +43,92 @@ export default {
       ],
     };
   },
+  computed: {
+    selectedAdvantage() {
+      return this.advantages[this.selectedAdvantageIndex];
+    }
+  },
+  methods: {
+    selectAdvantage(index) {
+      this.selectedAdvantageIndex = index;
+    }
+  }
 };
 </script>
 
 <style scoped>
-.audit {
-  padding: 8rem 2rem 2rem; /* Padding top réduit à 8rem */
+.audit-features {
+  padding: 2rem;
   background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
 }
 
-.audit h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.audit-features h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.audit p {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 1rem;
-  justify-items: center;
-  padding-top: 8rem;
-}
-
-.card {
-  perspective: 1000px;
-  width: 400px;
-  height: 300px;
-}
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 8px;
+.features-container {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Les cartes sont maintenant sur deux colonnes */
+  gap: 1rem;
+  width: 40%; /* Les cartes prennent 40% de l'espace */
+}
+
+.feature-box {
+  display: flex;
   justify-content: center;
-  padding: 1rem;
+  align-items: center;
+  height: 150px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card-front {
-  background-color: #ffffff;
-  color: #007bff;
-  font-size: 1.5rem;
-  font-weight: bold;
+.feature-box h3 {
+  color: #007BFF;
+  text-align: center;
 }
 
-.card-back {
-  background-color: #f7f7f7;
-  transform: rotateY(180deg);
+.feature-box.active {
+  background-color: #e0f7fa;
+}
+
+.feature-box:hover {
+  background-color: #e0f7fa;
+}
+
+.feature-description {
+  width: 55%; /* Le texte prend 55% de l'espace */
+  padding-left: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: left; /* Aligner le texte à gauche */
 }
 
-.card-back p {
-  font-size: 1rem;
+.feature-description h3 {
+  color: #007BFF;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-description p {
   line-height: 1.6;
+  font-size: 1rem;
+}
+
+.full-width-wave.no-bottom-margin {
+  margin-bottom: 0;
 }
 </style>

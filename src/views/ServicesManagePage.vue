@@ -7,43 +7,52 @@
       <p>La fiabilité technique d’une gestion externe de votre parc</p>
     </section>
 
-    <!-- Include the ConnectivitySection Component -->
-    <ConnectivitySection />
-
-    <!-- Include the ParkManagementSection Component -->
-    <ParkManagementSection />
+    <!-- Include the CombinedSection Component -->
+    <CombinedSection />
   </div>
 </template>
 
 <script>
-import ConnectivitySection from '@/components/manage/ConnectivitySection.vue';
-import ParkManagementSection from '@/components/manage/ParkManagementSection.vue';
+import CombinedSection from '@/components/manage/CombinedSection.vue';
 
 export default {
   name: 'ServicesManagePage',
   components: {
-    ConnectivitySection,
-    ParkManagementSection
+    CombinedSection
   }
 };
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .services-manages-page {
-  padding-top: 120px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Utilisation de la police Poppins */
   color: #333;
   line-height: 1.6;
 }
 
 .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 2rem;
-  background-color: #f7f7f7;
+  background-color: #ffffff; /* Fond blanc pour la section */
+  min-height: 100vh; /* Occupe toute la hauteur de l'écran */
+  background-image: url('@/assets/BK-logo.png'); /* Ajout de l'image de fond */
+  background-size: 550px; /* Ajuster la taille de l'image */
+  background-position: bottom right; /* Positionner l'image en bas à droite */
+  background-repeat: no-repeat; /* Empêcher la répétition de l'image */
 }
 
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
 }
 </style>

@@ -4,6 +4,7 @@
     <FonctionnalitésClefs />
     <FonctionnalitésAvancées />
     <IntégrationCRM />
+    <XBeesComponent />
     <VideoSection />
   </div>
 </template>
@@ -13,6 +14,7 @@ import XBeesIntro from '@/components/x-bees/XBeesIntro.vue';
 import FonctionnalitésClefs from '@/components/x-bees/FonctionnalitésClefs.vue';
 import IntégrationCRM from '@/components/x-bees/IntégrationCRM.vue';
 import VideoSection from '@/components/x-bees/VideoSection.vue';
+import XBeesComponent from '@/components/x-bees/XBeesComponent.vue';
 
 export default {
   name: 'XBeesPage',
@@ -21,6 +23,7 @@ export default {
     FonctionnalitésClefs,
     IntégrationCRM,
     VideoSection,
+    XBeesComponent,
   },
 };
 </script>

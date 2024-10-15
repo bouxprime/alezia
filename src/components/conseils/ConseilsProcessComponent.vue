@@ -65,11 +65,14 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* Styles pour la section "process-carousel" */
 .process-carousel {
   padding: 2rem;
   text-align: center;
   padding-bottom: 3rem; /* Ajout de padding en bas */
+  font-family: 'Poppins', sans-serif; /* Appliquer la police Poppins */
 }
 
 .process-carousel h2 {
@@ -80,7 +83,7 @@ export default {
 .process-carousel .subtitle {
   font-size: 1.5rem; /* Augmentation de la taille */
   margin-bottom: 2rem;
-  color: blue; /* Mettre en bleu */
+  color: #007BFF; /* Mettre la couleur en bleu */
   font-weight: bold; /* Optionnel pour accentuer */
 }
 
@@ -133,7 +136,7 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #007bff;
+  background-color: #007bff; /* Mettre la couleur en #007BFF */
   border: none;
   color: white;
   width: 40px;

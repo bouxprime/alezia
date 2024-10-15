@@ -1,80 +1,142 @@
 <template>
-    <section class="cybersecurite-services">
-      <div class="services-grid">
-  
-        <!-- New Section 1 -->
-        <div class="service-item">
-          <h3>Face à des menaces sophistiquées</h3>
-          <p>Face à des menaces cybercriminelles de plus en plus sophistiquées, à la complexité croissante des systèmes d'information et aux exigences légales strictes en sécurité informatique, ALEZIA est là pour vous accompagner.</p>
-        </div>
-  
-        <!-- New Section 2 -->
-        <div class="service-item">
-          <h3>Concentration sur l'activité principale</h3>
-          <p>En confiant votre cybersécurité à ALEZIA, vous pouvez vous concentrer sereinement sur votre activité principale tout en bénéficiant des avantages de l'externalisation et de l'infogérance.</p>
-        </div>
-  
-        <!-- Service Item 1 -->
-        <div class="service-item">
-          <h3>Veille, Prévention et Réactivité</h3>
-          <p>Nous surveillons en temps réel votre sécurité informatique et intervenons immédiatement, des correctifs aux mesures d'urgence pour les vulnérabilités zero-day.</p>
-        </div>
-  
-        <!-- Service Item 2 -->
-        <div class="service-item">
-          <h3>Réduction des Coûts et de la Charge de Travail</h3>
-          <p>Externalisez pour diminuer vos coûts de gestion et alléger la charge de travail de vos équipes tout en accédant à une expertise avancée.</p>
-        </div>
-  
-        <!-- Service Item 3 -->
-        <div class="service-item">
-          <h3>Gestion des Risques et Conformité</h3>
-          <p>Nous vous aidons à gérer les risques informatiques et à respecter les régulations telles que le RGPD et les normes industrielles.</p>
-        </div>
-  
-        <!-- Service Item 4 -->
-        <div class="service-item">
-          <h3>Sensibilisation et Bonnes Pratiques</h3>
-          <p>Nous veillons à ce que vos équipes soient formées aux meilleures pratiques en cybersécurité.</p>
+    <Wave2Component />
+  <section class="cloud-features">
+    <h2 class="section-title">Nos services</h2>
+    <div class="features-container"> <!-- Nouveau conteneur pour la disposition -->
+      <div class="features-grid">
+        <div
+          class="feature-box"
+          v-for="(feature, index) in features"
+          :key="index"
+          @click="selectFeature(index)"
+          :class="{ active: selectedFeatureIndex === index }"
+        >
+          <h3>{{ feature.title }}</h3>
         </div>
       </div>
-    </section>
-  </template>
-  
-  <script>
-  export default {
-    name: 'CybersecuriteServices',
-  };
-  </script>
-  
-  <style scoped>
-  .cybersecurite-services {
-    padding: 2rem;
-    background-color: #fff;
+
+      <div class="feature-description" v-if="selectedFeature">
+        <h3>{{ selectedFeature.title }}</h3>
+        <p>{{ selectedFeature.description }}</p>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+
+import Wave2Component from '@/components/utilities/wave2.vue';
+
+export default {
+  name: 'CybersecuriteServices',
+  components: {
+
+    Wave2Component,
+  },
+  data() {
+    return {
+      selectedFeatureIndex: 0,
+      features: [
+        {
+          title: 'Veille, Prévention et Réactivité',
+          description: "Nous surveillons en temps réel votre sécurité informatique et intervenons immédiatement, des correctifs aux mesures d'urgence pour les vulnérabilités zero-day."
+        },
+        {
+          title: 'Réduction des Coûts et de la Charge de Travail',
+          description: "Externalisez pour diminuer vos coûts de gestion et alléger la charge de travail de vos équipes tout en accédant à une expertise avancée."
+        },
+        {
+          title: 'Gestion des Risques et Conformité',
+          description: "Nous vous aidons à gérer les risques informatiques et à respecter les régulations telles que le RGPD et les normes industrielles."
+        },
+        {
+          title: 'Sensibilisation et Bonnes Pratiques',
+          description: "Nous veillons à ce que vos équipes soient formées aux meilleures pratiques en cybersécurité."
+        }
+      ]
+    };
+  },
+  computed: {
+    selectedFeature() {
+      return this.features[this.selectedFeatureIndex];
+    }
+  },
+  methods: {
+    selectFeature(index) {
+      this.selectedFeatureIndex = index;
+    }
   }
-  
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  
-  .service-item {
-    background-color: #f1f1f1;
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .service-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .service-item p {
-    font-size: 1rem;
-    color: #333;
-  }
-  </style>
-  
+};
+</script>
+
+<style scoped>
+.cloud-features {
+  padding: 3rem 2rem; /* Ajout de padding haut et bas, avec padding latéral */
+  background-color: white;
+  font-family: 'Poppins', sans-serif; /* Appliquer la police à toute la section */
+}
+
+.section-title {
+  text-align: center;
+  color: black;
+  margin-bottom: 2rem;
+  font-size: 32px; /* Taille du titre mise à jour */
+}
+
+.features-container {
+  display: flex; /* Utilisation de flex pour aligner les éléments */
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+  gap: 1rem;
+  width: 60%; /* Ajustez la largeur de la grille */
+}
+
+.feature-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.feature-box h3 {
+  color: #1e90ff;
+  text-align: center;
+}
+
+.feature-box.active {
+  background-color: #e0f7fa;
+}
+
+.feature-box:hover {
+  background-color: #e0f7fa;
+}
+
+.feature-description {
+  width: 40%; /* Ajustez la largeur du texte descriptif */
+  padding-left: 2rem; /* Espacement à gauche */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.feature-description h3 {
+  color: #1e90ff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-description p {
+  line-height: 1.6;
+  font-size: 1rem;
+  text-align: center;
+}
+</style>

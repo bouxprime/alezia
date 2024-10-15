@@ -11,13 +11,16 @@
     <div class="blog-cards-wrapper">
       <div class="blog-cards" :style="transformStyle">
         <div v-for="(card, index) in eventBus.news" :key="index" class="blog-card">
-          <div class="card-image-wrapper">
-            <img :src="require(`@/assets/${card.image}`)" alt="Card image">
-          </div>
-          <div class="card-content">
-            <h2>{{ card.title }}</h2>
-            <p>{{ card.description }}</p>
-          </div>
+          <!-- Lien autour de la carte -->
+          <a :href="card.link" target="_blank" rel="noopener noreferrer">
+            <div class="card-image-wrapper">
+              <img :src="require(`@/assets/${card.image}`)" alt="Card image">
+            </div>
+            <div class="card-content">
+              <h2>{{ card.title }}</h2>
+              <p>{{ card.description }}</p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -77,6 +80,7 @@ export default {
   align-items: center;
   margin-bottom: 10px; /* Réduire la marge en bas */
   padding-right: 20px; /* Ajouter un padding à droite pour aligner le titre */
+  margin-top: 75px;
 }
 
 .news-title {
@@ -134,6 +138,16 @@ export default {
   flex-direction: column;
   align-items: flex-start; /* Aligner le contenu à gauche */
   box-sizing: border-box;
+}
+
+/* Enlève le surlignage du texte dans les liens */
+.blog-card a {
+  text-decoration: none;
+  color: inherit; /* Hérite de la couleur du texte */
+}
+
+.blog-card a:hover {
+  color: #1E90FF; /* Change la couleur lors du survol */
 }
 
 .card-image-wrapper {

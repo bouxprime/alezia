@@ -14,7 +14,7 @@
             <li><router-link to="/solution" @click="toggleMenu">Solutions</router-link></li>
             <li><router-link to="/integration" @click="toggleMenu">Intégrations</router-link></li>
             <li><router-link to="/x-bees" @click="toggleMenu">X-bees</router-link></li>
-            <li><router-link to="/x-hopper" @click="toggleMenu">X-hopper</router-link></li>
+            <li><router-link to="/x-hopper" @click="toggleMenu">X-hoppers</router-link></li>
             <li><router-link to="/alezia-studio" @click="toggleMenu">Alezia Studio</router-link></li>
           </ul>
         </li>
@@ -231,7 +231,7 @@ nav.services-page .nav-links a {
 }
 
 .phone-button {
-  padding: 0.5em 1em; /* Réduit la largeur en ajustant le padding */
+  padding: 0.3em 0.6em; /* Réduit la largeur en ajustant le padding */
   border: 2px solid #1e90ff;
   border-radius: 25px; /* Réduit le border-radius pour diminuer la largeur du round */
   color: white;

@@ -34,26 +34,30 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh; /* Remplace la hauteur fixe par un min-height pour plus de flexibilité */
-  background-color: #f7f7f7;
-  padding-top: 120px; /* Ajoute un padding-top pour éviter le chevauchement avec la navbar */
-  padding-bottom: 100px; /* Ajoute un padding-bottom pour espacer la section suivante */
+  min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  padding: 0 40px;
+  background-image: url('@/assets/BK-logo.png'); /* Ajout de l'image de fond */
+  background-size: 550px; /* Ajuster la taille de l'image */
+  background-position: bottom right; /* Positionner l'image en bas à droite */
+  background-repeat: no-repeat; /* Empêcher la répétition de l'image */
 }
 
 .hero-content {
   text-align: center;
-  max-width: 1200px; /* Augmente la largeur maximale pour étendre le texte */
-  padding: 0 40px; /* Ajoute un padding sur les côtés pour améliorer la lisibilité */
+  max-width: 1200px; /* Limiter la largeur du texte */
+  z-index: 2; /* Assurer que le texte est au-dessus de l'image */
 }
 
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  color: #000; /* Texte en noir */
 }
 
 p {
   margin-bottom: 1.5rem;
   font-size: 1.125rem;
   line-height: 1.6;
+  color: #000; /* Texte en noir pour une meilleure lisibilité */
 }
 </style>

@@ -6,7 +6,11 @@
       </div>
       <div class="text-container">
         <h2>L'histoire d'Alezia</h2>
-        <p class="description">Chez <strong>Alezia</strong>, nous nous inspirons de la célèbre bataille d'Alésia, symbole de persévérance et de stratégie. Fondée sur des valeurs d'innovation et de résilience, notre entreprise est déterminée à guider nos clients vers le succès, tout comme Vercingétorix a guidé ses troupes avec détermination et intelligence. Avec une équipe passionnée et des solutions technologiques avancées, nous accompagnons les entreprises dans leurs défis quotidiens.</p>
+        <p class="description">En 52 avant notre ère, Gaulois et Romains s'affrontent lors du siège d'<strong>Alésia</strong>, un épisode décisif de la guerre des Gaules. Malgré une situation critique, encerclés par deux armées gauloises et en infériorité numérique, les troupes romaines remportent pourtant cette bataille finale. Et attribuer cette victoire à la chance ou au hasard serait une erreur d’appréciation. Jules César, fin observateur, exploite les spécificités du terrain pour inverser le cours des événements, révélant ainsi son talent exceptionnel pour la stratégie, l'innovation et sa détermination sans faille.
+
+
+
+Plus de 2000 ans plus tard, bien loin des champs de bataille, la société Alezia mène son propre combat pour accompagner au mieux ses partenaires. C’est en s’appuyant sur ces mêmes valeurs – observation, stratégie, innovation et détermination – qu’Alezia puise la force nécessaire pour mener à bien ses missions.</p>
         <p class="founder-info"> Alezia, Co-Fondateur</p>
       </div>
     </div>
@@ -74,6 +78,7 @@ export default {
   border: none;
   z-index: 4;
   position: relative;
+  border-radius: 5%;
 }
 .text-container {
   flex: 2;

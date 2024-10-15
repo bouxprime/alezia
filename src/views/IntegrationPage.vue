@@ -26,8 +26,77 @@
 
     <!-- Grille des cadres gris -->
     <div class="integrations-grid">
-      <div class="integration-item" v-for="n in 25" :key="n">
-        <div class="logo-placeholder"></div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration1.png" alt="Integration Image 1" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration2.png" alt="Integration Image 2" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration3.png" alt="Integration Image 3" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration4.png" alt="Integration Image 4" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration5.png" alt="Integration Image 5" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration6.png" alt="Integration Image 6" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration7.png" alt="Integration Image 7" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration8.png" alt="Integration Image 8" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration9.png" alt="Integration Image 9" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration10.png" alt="Integration Image 10" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration11.png" alt="Integration Image 11" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration12.png" alt="Integration Image 12" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration13.png" alt="Integration Image 13" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration14.png" alt="Integration Image 14" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration15.png" alt="Integration Image 15" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration16.png" alt="Integration Image 16" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration17.png" alt="Integration Image 17" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration18.png" alt="Integration Image 18" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration19.png" alt="Integration Image 19" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration20.png" alt="Integration Image 20" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration21.png" alt="Integration Image 21" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration22.png" alt="Integration Image 22" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration23.png" alt="Integration Image 23" class="integration-image" />
+      </div>
+      <div class="integration-item">
+        <img src="@/assets/integration/integration24.png" alt="Integration Image 24" class="integration-image" />
       </div>
     </div>
   </div>
@@ -40,6 +109,14 @@ export default {
 </script>
 
 <style scoped>
+/* Import de la police Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Appliquer la police Poppins */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 .integration-page {
   padding: 0;
   margin: 0;
@@ -47,28 +124,38 @@ export default {
 
 .hero {
   text-align: center;
-  padding: 2rem;
-  padding-top: 100px; /* Ajouter du padding-top pour éviter le chevauchement avec la navbar */
-  background-color: #f7f7f7;
+  height: 100vh; /* Section prend toute la hauteur de la fenêtre */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrer verticalement */
+  align-items: center; /* Centrer horizontalement */
+  padding: 0 2rem;
+  background-image: url('@/assets/BK-logo.png'); /* Image de fond comme dans le code d'inspiration */
+  background-size: 550px; /* Ajuster la taille de l'image */
+  background-position: bottom right; /* Positionner l'image en bas à droite */
+  background-repeat: no-repeat; /* Empêcher la répétition de l'image */
   margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif; /* Utilisation de la police Poppins */
 }
 
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  padding-top: 2rem;
+  color: #000; /* Couleur noire pour le titre */
 }
 
 .hero-text {
   max-width: 1000px; /* Élargir la zone de texte */
   margin: 0 auto;
   text-align: left;
+  color: #000; /* Texte en noir pour rester cohérent avec le reste */
 }
 
 .hero p {
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+  color: #000;
 }
 
 /* Texte d'intégrations disponibles */
@@ -78,7 +165,7 @@ export default {
 }
 
 .integrations-text {
-  color: #007bff;
+  color: #007bff; /* Couleur bleue spécifique */
   font-size: 2.5rem; /* Taille de la police identique à celle du titre "Intégration" */
   font-weight: bold;
 }
@@ -93,8 +180,8 @@ export default {
 
 .classification-item {
   padding: 0.5rem 1rem;
-  background-color: transparent; /* Suppression des bordures et fond */
-  color: #333; /* Couleur du texte */
+  background-color: transparent;
+  color: #333;
   text-align: center;
   cursor: pointer;
   font-weight: bold;
@@ -118,12 +205,16 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 150px; /* Largeur fixe pour chaque élément contenant l'image */
+  height: 150px; /* Hauteur fixe pour chaque élément contenant l'image */
+  overflow: hidden; /* Masquer tout débordement d'image */
 }
 
-.logo-placeholder {
-  width: 100px;
-  height: 100px;
-  background-color: #ccc; /* Couleur grise pour le cadre */
-  border-radius: 10px;
+.integration-image {
+  width: 100%; /* Largeur à 100% pour remplir le conteneur */
+  height: auto; /* Hauteur automatique pour garder le ratio */
+  max-height: 100%; /* Limitez la hauteur maximale à celle du conteneur */
+  object-fit: contain; /* Maintient les proportions tout en remplissant le conteneur */
+  border-radius: 10px; /* Coins arrondis pour les images */
 }
 </style>

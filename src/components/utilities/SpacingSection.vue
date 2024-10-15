@@ -8,8 +8,8 @@
       </div>
       <div class="divider"></div>
       <div class="text-container">
-        <h2>Nos partenaires</h2>
-        <p>Chez <strong>Alezia</strong>, nous collaborons avec des leaders du secteur pour vous offrir des solutions technologiques et VoIP de pointe.</p>
+        <h2>Nos Marques</h2>
+        <p>Notre société collabore avec les meilleurs standards du marché pour garantir la qualité et la fiabilité de nos solutions. Nous assurons à nos clients une technologie de pointe, une innovation continue et une performance optimale pour leurs besoins spécifiques.</p>
       </div>
       <div class="divider"></div>
       <div class="right-logos">
@@ -32,7 +32,7 @@ export default {
       ],
       rightPartners: [
         { name: 'Partner 3', logo: 'partner3.png' },
-        { name: 'Partner 4', logo: 'partner1.png' }
+        { name: 'Partner 4', logo: 'partner4.png' }
       ],
       isInView: false
     };
@@ -70,7 +70,7 @@ export default {
   position: relative;
   background-color: #192544; /* Changement de la couleur de fond */
   color: #fff; /* Texte en blanc */
-  padding: 4em 2em 2em; /* Réduire le padding en haut et en bas */
+  padding: 2em 2em; /* Diminuer le padding en haut et en bas */
   overflow: hidden; /* Assurer qu'il n'y a pas de débordement */
   min-height: auto; /* Supprimer la hauteur minimale */
 }
@@ -129,7 +129,6 @@ export default {
 
 .divider {
   width: 1px;
-   /* Réduire la hauteur de la barre */
   background-color: #fff; /* Couleur de la barre verticale */
   margin: 0 2em; /* Espace autour de la barre */
   align-self: stretch; /* S'assurer que la barre prend toute la hauteur disponible */
@@ -138,7 +137,8 @@ export default {
 .text-container {
   text-align: center;
   margin: 0 2em; /* Espace autour du texte */
-  flex: 2; /* Prendre plus d'espace */
+  flex: 4; /* Prendre plus d'espace */
+  max-width: 1000px; /* Définir une largeur maximale */
 }
 
 .text-container h2 {

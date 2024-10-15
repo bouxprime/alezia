@@ -1,7 +1,7 @@
 <template>
   <div class="contact-container">
     <div class="contact-left">
-      <h2>Alezia</h2>
+      <img src="@/assets/contact-alezia.png" alt="Alezia - Solutions Innovantes" class="contact-image" />
       <h1>Solutions Innovantes pour Votre Entreprise</h1>
       <ul>
         <li>Nous offrons des solutions informatiques adaptées à vos besoins.</li>
@@ -22,15 +22,6 @@
             <input type="email" id="email" v-model="form.email" required />
           </div>
           <div class="contact-form-group">
-            <label for="budget">Taille du budget</label>
-            <select id="budget" v-model="form.budget" required>
-              <option disabled value="">Veuillez sélectionner une option</option>
-              <option value="small">Petit</option>
-              <option value="medium">Moyen</option>
-              <option value="large">Grand</option>
-            </select>
-          </div>
-          <div class="contact-form-group">
             <label for="description">Description</label>
             <textarea id="description" v-model="form.description" required></textarea>
           </div>
@@ -40,28 +31,64 @@
           </div>
           <button type="submit" class="submit-button">SOUMETTRE</button>
         </form>
+        <div v-if="status.message" :class="['status-message', status.success ? 'success' : 'error']">
+          {{ status.message }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       form: {
         name: '',
         email: '',
-        budget: '',
         description: '',
         source: ''
+      },
+      status: {
+        message: '',
+        success: false
       }
     };
   },
   methods: {
-    submitForm() {
-      console.log(this.form);
-      // Handle form submission logic here
+    async submitForm() {
+      try {
+        console.log("[DEBUG] Début de la soumission du formulaire...");
+        const formData = new URLSearchParams();
+        formData.append('name', this.form.name);
+        formData.append('email', this.form.email);
+        formData.append('description', this.form.description);
+        formData.append('source', this.form.source);
+
+        console.log("[DEBUG] Données du formulaire prêtes à être envoyées :", formData.toString());
+        const response = await axios.post('https://alezia.be/send-email.php', formData, {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        });
+
+        console.log("[DEBUG] Réponse reçue :", response);
+        if (response.status === 200) {
+          console.log("[DEBUG] Email envoyé avec succès.");
+          this.status = {
+            message: 'Votre message a bien été envoyé.',
+            success: true
+          };
+        }
+      } catch (error) {
+        console.error("[ERROR] Erreur lors de la soumission du formulaire :", error);
+        this.status = {
+          message: "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer plus tard.",
+          success: false
+        };
+      }
     }
   }
 };
@@ -94,15 +121,15 @@ body {
   width: 45%;
 }
 
+.contact-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 40px;
+}
+
 h1 {
   font-size: 24px;
   margin-bottom: 20px;
-}
-
-h2 {
-  font-size: 36px; /* Increase font size */
-  text-align: left; /* Align text to the left */
-  margin-bottom: 40px; /* Space below the heading */
 }
 
 ul {
@@ -126,7 +153,7 @@ li::before {
   background-color: #FFFFFF;
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form {
@@ -148,34 +175,48 @@ input[type="email"],
 select,
 textarea {
   width: 100%;
-  padding: 15px; /* Increase padding for more height */
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #FFFFFF;
 }
 
 textarea {
-  height: 120px; /* Specific height for textarea */
+  height: 120px;
 }
 
 button.submit-button {
-  padding: 10px 20px; /* Adjust padding for the button */
-  border: 2px solid #1e90ff; /* Blue border */
+  padding: 10px 20px;
+  border: 2px solid #1e90ff;
   border-radius: 50px;
-  color: white; /* White text color */
-  text-decoration: none;
-  font-weight: bold;
-  background-color: #1e90ff; /* Blue background */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-  font-size: 1.2em; /* Keep font size slightly larger for the contact button */
-  font-family: 'Poppins', sans-serif; /* Apply the new font */
-  align-self: flex-start; /* Align the button to the left */
-  margin-top: 10px; /* Add a bit of space above the button */
+  color: white;
+  background-color: #1e90ff;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 1.2em;
+  font-family: 'Poppins', sans-serif;
+  align-self: flex-start;
+  margin-top: 10px;
 }
 
 button.submit-button:hover {
-  background-color: transparent; /* Transparent background on hover */
-  color: #1e90ff; /* Blue text color on hover */
+  background-color: transparent;
+  color: #1e90ff;
+}
+
+.status-message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
 @media (max-width: 1024px) {
@@ -197,59 +238,51 @@ button.submit-button:hover {
 
 @media (max-width: 768px) {
   h1 {
-    font-size: 26px; /* Increase font size for smaller screens */
-  }
-
-  h2 {
-    font-size: 40px; /* Increase font size for smaller screens */
+    font-size: 26px;
   }
 
   ul {
-    font-size: 18px; /* Increase list font size */
+    font-size: 18px;
   }
 
   button.submit-button {
-    font-size: 1.4em; /* Increase button font size */
+    font-size: 1.4em;
   }
 
   .form-wrapper {
-    padding: 40px; /* Increase padding for smaller screens */
+    padding: 40px;
   }
 
   input[type="text"],
   input[type="email"],
   select,
   textarea {
-    padding: 20px; /* Increase padding for smaller screens */
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
   h1 {
-    font-size: 28px; /* Further increase font size */
-  }
-
-  h2 {
-    font-size: 44px; /* Further increase font size */
+    font-size: 28px;
   }
 
   ul {
-    font-size: 20px; /* Further increase list font size */
+    font-size: 20px;
   }
 
   .form-wrapper {
-    padding: 50px; /* Further increase padding */
+    padding: 50px;
   }
 
   input[type="text"],
   input[type="email"],
   select,
   textarea {
-    padding: 25px; /* Further increase padding */
+    padding: 25px;
   }
 
   button.submit-button {
-    font-size: 1.6em; /* Further increase button font size */
+    font-size: 1.6em;
   }
 }
 </style>

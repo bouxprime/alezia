@@ -2,7 +2,7 @@
   <section class="art-project">
     <div class="content">
       <div class="image">
-        <img src="@/assets/tom1.png" alt="Project Image" />
+        <img src="@/assets/à-propos-alezia.jpg" alt="Project Image" />
       </div>
       <div class="text">
         <h2>L'art de faire aboutir votre projet</h2>
@@ -58,6 +58,7 @@ export default {
 h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
+  color: #007BFF; /* Couleur bleue changée */
 }
 
 p {

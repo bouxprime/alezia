@@ -12,14 +12,11 @@ export const eventBus = reactive({
     { image: require('@/assets/tom1.png'), name: 'Mike Blue', role: 'Responsable Support', description: 'Mike dirige l\'équipe de support client et assure la satisfaction des clients.', currentProject: 'Mise en œuvre d\'un nouveau système de ticketing', skills: 'Support client, CRM, Communication', experience: '7 ans d\'expérience en support client' }
   ],
   news: [
-    { image: 'blog1.png', title: 'Alezia remporte le prix de l\'innovation 2023', description: 'Nous sommes fiers d\'annoncer qu\'Alezia a remporté le prix de l\'innovation technologique pour notre dernière solution VoIP.' },
-    { image: 'blog2.png', title: 'Nouvelle collaboration avec TechCorp', description: 'Alezia s\'associe à TechCorp pour développer des solutions de communication avancées pour les entreprises.' },
-    { image: 'blog3.png', title: 'Interview de notre CEO par Le Monde', description: 'Découvrez l\'interview exclusive de notre CEO, parlant des tendances futures en matière de sécurité informatique.' },
-    { image: 'blog4.png', title: 'Alezia étend ses opérations en Europe', description: 'Nous sommes ravis d\'annoncer l\'ouverture de nouveaux bureaux en Allemagne et en Espagne.' },
-    { image: 'blog1.png', title: 'Séminaire sur la cybersécurité', description: 'Participez à notre séminaire exclusif sur la cybersécurité et apprenez comment protéger votre entreprise contre les menaces en ligne.' },
-    { image: 'blog2.png', title: 'Lancement d\'une nouvelle plateforme de support client', description: 'Découvrez notre nouvelle plateforme de support client conçue pour offrir une assistance rapide et efficace.' },
-    { image: 'blog3.png', title: 'Histoire de réussite : Optimisation des coûts IT pour XYZ Corp', description: 'Découvrez comment nous avons aidé XYZ Corp à réduire ses coûts informatiques tout en améliorant l\'efficacité opérationnelle.' },
-    { image: 'blog4.png', title: 'Webinaire sur l\'avenir de la VoIP', description: 'Rejoignez-nous pour un webinaire sur les dernières tendances et innovations en matière de téléphonie VoIP.' },
-    { image: 'blog1.png', title: 'Programme de mentorat pour startups', description: 'Alezia lance un nouveau programme de mentorat pour soutenir les startups technologiques émergentes.' },
+    { image: 'blog1.png', title: 'Wildix verticalise ses offres', description: 'Wildix verticalise ses offres dans le secteur des télécoms.', link: 'https://www.edi-mag.fr/telecom/wildix-verticalise-ses-offres/' },
+    { image: 'blog2.png', title: 'Wildix reconnu comme Niche Player dans le Gartner® Magic Quadrant™ 2023', description: 'Wildix reconnu comme Niche Player dans le Gartner.', link: 'https://www.wildix.com/fr/wildix-reconnaissance-gartner-magic-quadrant-2023-ucaas/' },
+    { image: 'blog3.png', title: 'Cybersécurité : faites le choix des services managés', description: 'Cybersécurité et services managés.', link: 'https://www.pwc.fr/fr/vos-enjeux/cyber-intelligence/cybersecurite-des-services-manages.html' },
+    { image: 'blog4.png', title: 'Services Managés : l’allié invisible de la performance entreprise', description: 'Services Managés, un atout pour l\'entreprise.', link: 'https://pme-eti.fr/services-manages-lallie-invisible-de-la-performance-entreprise/' },
+    { image: 'blog1.png', title: 'Malgré les coûts élevés, la moitié des organisations refusent d’accroître leur budget de sécurité', description: 'Sécurité et budget dans les entreprises.', link: 'https://datanews.levif.be/actualite/securite/fuites-donnees/malgre-les-couts-eleves-la-moitie-des-organisations-aux-prises-avec-des-fuites-de-donnees-refusent-daccroitre-leur-budget-de-securite/' },
+    { image: 'blog2.png', title: 'L’A6K tient l’avenir dans le creux de sa main', description: 'L\'A6K et l\'avenir de la technologie.', link: 'https://www.telesambre.be/info/economie/la6k-tient-lavenir-dans-le-creux-de-sa-main/64067' },
   ]
 });

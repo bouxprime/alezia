@@ -21,9 +21,20 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 .hero {
-  text-align: center;
-  padding: 4rem 1rem; /* Ajout de plus de padding en haut */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+  width: 100vw; /* Prend toute la largeur de la fenêtre */
+  padding: 4rem 1rem;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box; /* Assure que le padding est pris en compte dans les dimensions */
+  background: url('@/assets/alezia-background-3.png') no-repeat calc(100% + 50px) center;
+  background-size: 40%; /* Réduit la taille de l'image à 40% de la largeur */
 }
 
 .hero h1 {
@@ -48,8 +59,7 @@ export default {
   text-align: justify;
 }
 
-/* Ajout d'une classe pour mettre en bleu le texte */
 .blue-text {
-  color: blue;
+  color: #007BFF;
 }
 </style>

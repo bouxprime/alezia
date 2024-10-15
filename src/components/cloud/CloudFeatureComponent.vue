@@ -1,27 +1,39 @@
 <template>
-  <section class="cloud-features">
-    <div class="features-grid">
-      <div
-        class="feature-box"
-        v-for="(feature, index) in features"
-        :key="index"
-        @click="selectFeature(index)"
-        :class="{ active: selectedFeatureIndex === index }"
-      >
-        <h3>{{ feature.title }}</h3>
+  <Wave2Component class="full-width-wave" />
+  <section class="banner why-cloud">
+    <h2>Pourquoi avoir recours au Cloud ?</h2>
+    <section class="cloud-features">
+      <div class="features-grid">
+        <div
+          class="feature-box"
+          v-for="(feature, index) in features"
+          :key="index"
+          @click="selectFeature(index)"
+          :class="{ active: selectedFeatureIndex === index }"
+        >
+          <h3>{{ feature.title }}</h3>
+        </div>
       </div>
-    </div>
-
-    <div class="feature-description" v-if="selectedFeature">
-      <h3>{{ selectedFeature.title }}</h3>
-      <p>{{ selectedFeature.description }}</p>
-    </div>
+  
+      <div class="feature-description" v-if="selectedFeature">
+        <h3>{{ selectedFeature.title }}</h3>
+        <p>{{ selectedFeature.description }}</p>
+      </div>
+    </section>
   </section>
+  <Wave3Component class="full-width-wave" />
 </template>
 
 <script>
+import Wave3Component from '@/components/utilities/wave3.vue';
+import Wave2Component from '@/components/utilities/wave2.vue';
+
 export default {
   name: 'CloudFeatureComponent',
+  components: {
+    Wave3Component,
+    Wave2Component,
+  },
   data() {
     return {
       selectedFeatureIndex: 0,
@@ -82,10 +94,12 @@ export default {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-align: center;
 }
 
 .feature-box h3 {
   color: #1e90ff;
+  text-align: center;
 }
 
 .feature-box.active {
@@ -96,23 +110,41 @@ export default {
   background-color: #e0f7fa;
 }
 
-h3 {
-  margin: 0;
-}
-
 .feature-description {
   width: 55%;
   padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .feature-description h3 {
   color: #1e90ff;
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .feature-description p {
   line-height: 1.6;
   font-size: 1rem;
+  text-align: center;
+}
+
+.full-width-wave {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.banner {
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
+}
+
+.banner h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 </style>

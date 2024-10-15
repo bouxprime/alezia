@@ -35,27 +35,28 @@
 export default {
   name: 'AppFooter',
   mounted() {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.$refs.separator.classList.add('animate-growVertical');
-        }
-      });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        this.$refs.separator.classList.add('animate-growVertical');
+      }
     });
+  });
 
-    observer.observe(this.$refs.footer);
-    // Load Google Maps
-    if (typeof google !== 'undefined') {
-      this.initMap();
-    } else {
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDxrlGZZCmy3tPPFzF7kPLLc6tbmzCYHO0&callback=initMap`;
-      script.async = true;
-      document.head.appendChild(script);
+  observer.observe(this.$refs.footer);
+  // Load Google Maps
+  if (typeof google !== 'undefined') {
+    this.initMap();
+  } else {
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
+    script.async = true;
+    script.defer = true; // Ajout de defer pour le chargement asynchrone
+    document.head.appendChild(script);
 
-      window.initMap = this.initMap;
-    }
-  },
+    window.initMap = this.initMap;
+  }
+},
   methods: {
     /* eslint-disable no-unused-vars */
     initMap() {

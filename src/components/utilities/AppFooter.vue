@@ -35,41 +35,54 @@
 export default {
   name: 'AppFooter',
   mounted() {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        this.$refs.separator.classList.add('animate-growVertical');
-      }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          this.$refs.separator.classList.add('animate-growVertical');
+        }
+      });
     });
-  });
 
-  observer.observe(this.$refs.footer);
-  // Load Google Maps
-  if (typeof google !== 'undefined') {
-    this.initMap();
-  } else {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
-    script.async = true;
-    script.defer = true; // Ajout de defer pour le chargement asynchrone
-    document.head.appendChild(script);
+    observer.observe(this.$refs.footer);
 
-    window.initMap = this.initMap;
-  }
-},
+    // Charger Google Maps de manière optimisée
+    if (typeof google !== 'undefined') {
+      this.initMap();
+    } else {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB-6PsdTIkQdVx7uLzwEilIKVay8khebrM&callback=initMap`;
+      script.async = true; // Charger de façon non bloquante
+      script.defer = true; // Charger après l'analyse HTML
+      document.head.appendChild(script);
+
+      // Lier initMap au scope actuel
+      window.initMap = this.initMap.bind(this);
+    }
+  },
   methods: {
-    /* eslint-disable no-unused-vars */
     initMap() {
       /* eslint-disable no-undef */
+      const charleroiLocation = { lat: 50.4108, lng: 4.4446 }; // Coordonnées de Charleroi
+
+      // Création de la carte centrée sur Charleroi
       const map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 48.8566, lng: 2.3522 }, // Paris coordinates as an example
-        zoom: 12
+        center: charleroiLocation,
+        zoom: 15
+      });
+
+      // Ajout d'un marqueur rouge sans utiliser de variable
+      new google.maps.Marker({
+        position: charleroiLocation,
+        map: map,
+        icon: {
+          url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png', // Icône rouge
+        },
       });
       /* eslint-enable no-undef */
-    }
-    /* eslint-enable no-unused-vars */
-  }
-}
+    },
+  },
+};
+
 
 </script>
 
